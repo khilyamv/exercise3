@@ -2,7 +2,6 @@ var request = new XMLHttpRequest();
 var data, getData
 var tabel = document.querySelector("#tabel");
 var cari = document.querySelector("#cari");
-//var pesan = document.querySelector("#pesan");
 
 function hide(x){
     document.querySelector(x).style.visibility = 'hidden';
@@ -11,8 +10,6 @@ function hide(x){
 function show(x){
     document.querySelector(x).style.visibility = 'visible';
 }
-
-//hide("#pesan");
 
 request.open('GET', 'https://swapi.co/api/planets/?format=json', true);
 request.onload = function() {
@@ -87,17 +84,13 @@ request.onload = function() {
             cariClimate();
             cariTerrain();
             if (cari.value == "") {
-//                hide("#pesan");
                 hapus();
                 tampil();
             } else if (tabel.rows.length == 1) {
-//                show("#pesan");
-//                pesan.innerHTML = "<i class='large frown outline icon'></i>Oops, data <b>" + cari.value + "</b> not found!";
                 row = tabel.insertRow(-1);
                 const message = row.insertCell(-1);
                 message.colSpan = 4;
                 message.innerHTML = '<div class="ui negative icon message"><i class="large frown outline icon"></i>Oops, data&nbsp;<b>' + cari.value + '</b>&nbsp;not found!</div>';
-//                message.innerHTML = '<p class=" ui negative message"><i class="large frown outline icon></i>Oops, data <b>' + cari.value + '</b> not found!</p>';
             }
         }
     });
